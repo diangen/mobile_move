@@ -1,0 +1,97 @@
+.nav {
+  text-align: center;
+  width: 100%;
+  height: 1.173333rem;
+  line-height: 1.173333rem;
+  border-bottom: 1px solid #0f0;
+  display: flex;
+  justify-content: space-between;
+}
+.nav span {
+  padding: 0 0.2333rem;
+}
+.nav .tit {
+  font-size: 0.48rem;
+  color: #333;
+}
+.banner {
+  width: 100%;
+}
+.banner img {
+  width: 100%;
+  display: block;
+}
+.content {
+  width: 100%;
+  padding: 0 0.266666rem;
+  box-sizing: border-box;
+}
+.content h3 {
+  font-size: 0.8rem;
+  margin: 10px 0;
+}
+.content p {
+  font-size: 0.426666rem;
+  margin: 0.1333rem 0;
+  line-height: 0.6333rem;
+}
+.content p span {
+  color: #666666;
+  margin-right: 0.4333rem;
+}
+.content .score {
+  color: #f00;
+  display: inline-block;
+}
+.ping {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+/* 评分五角星样式 */
+.rating {
+  width: 100%;
+}
+.rating-item {
+  float: left;
+  width: 21px;
+  height: 21px;
+  background: url(../img/rate.png) no-repeat;
+  cursor: pointer;
+  background-size: 40px;
+}
+.tempWrap {
+  width: 100%;
+}
+/* 评论 */
+.comment {
+  width: 100%;
+}
+.commetn-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0.4rem 0.266666rem;
+  box-sizing: border-box;
+}
+.commetn-item .avater {
+  width: 1.28rem;
+  flex: 0 0 1.28rem;
+  height: 1.28rem;
+  background-color: #ddd;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 0.266666rem 0 0;
+}
+.commetn-item .avater img {
+  width: 100%;
+  display: block;
+}
+.commetn-item .title {
+  font-size: 0.326666rem;
+}
+.commetn-item .title p {
+  margin: 0.1667rem 0.1333rem;
+  float: left;
+}

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./font/iconfont.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+
+  <div id="center1">
+    <div class="content1">
+      <div class="swiper-container" id="swiper-1">
+        <div class="swiper-wrapper" id="swiper-w">
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        <!-- 如果需要导航按钮 -->
+      </div>
+      <div class="nav">
+        <div class="empty"></div>
+        <div class="input">
+          <span class="iconfont icon-sousuo2"></span>
+          <input type="text" placeholder="请输入要搜索的内容">
+        </div>
+        <div class="icon">
+          <span class="iconfont icon-weimingmingwenjianjia_xiaoxi news"></span>
+        </div>
+      </div>
+      <div class="fastnav">
+        <ul id="fastnav-icon">
+        </ul>
+      </div>
+      <div class="bg"></div>
+      <div class="list">
+        <div class="list-header" id="list-header">
+          <div class="tit active">
+            <h4>热评口碑榜</h4>
+          </div>
+          <div class="tit">
+            <h4>最受期待榜</h4>
+          </div>
+          <div class="tit">
+            <h4>国内票房榜</h4>
+          </div>
+        </div>
+        <div class="list-content" id="con">
+          <div class="mode" id="con1">
+          </div>
+          <div class="mode hidden" id="con2"></div>
+          <div class="mode hidden" id="con3"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="content1 hidden">
+      <div class="cinema">
+        <div class="cin_header">
+          <!-- 下拉框 -->
+          <div class="cin_avater">
+            <img src="https://img.meituan.net/maoyanuser/828d7280355dafa1ecf491c53451457d4875.jpg@100w_100h_1e_1c"
+              alt="">
+          </div>
+          <!-- 下拉 -->
+          <div class="xiala"><span class="iconfont icon-xiangxia"></span></div>
+
+          <div class="cin_seach ">
+            <span class="iconfont icon-sousuo"></span>
+            <input type="text" placeholder="搜索内容">
+          </div>
+        </div>
+        <!-- 地理位置显示 -->
+        <!-- <div class=""></div> -->
+        <!-- 切换标题 -->
+        <div class="cin_title">
+          <ul>
+            <li>热映</li>
+            <li class="active">影院</li>
+            <li>待映</li>
+          </ul>
+        </div>
+        <div class="cin_content">
+          <div class="cin_c_item hidden">1</div>
+          <div class="cin_c_item">
+            <div class="cin_c_item_swiper">
+              <div class="swiper-container" id="swiper-2">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="https://p0.meituan.net/movie/0d8aef54ad164e099e7f83a32092b75936356.jpg@465w_258h_1e_1c"
+                      alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="https://p0.meituan.net/movie/0efa1c693f34e801c85cdbbe886299a352462.jpg@126w_126h_1e_1c"
+                      alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="https://p0.meituan.net/movie/174bc10b560f570697c1c220ec9e30bd56968.jpg@126w_126h_1e_1c"
+                      alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cin_c_item_head">
+              <ul>
+                <li>
+                  <p>全城<span class="iconfont icon-xiangxia"></span></p>
+                </li>
+                <li>
+                  <p>品牌<span class="iconfont icon-xiangxia"></span></p>
+                </li>
+                <li>
+                  <p>特色<span class="iconfont icon-xiangxia"></span></p>
+                </li>
+              </ul>
+            </div>
+            <!-- 电影详情 -->
+            <div class="cin_c_item_center">
+              <ul>
+                <li>
+                  <!-- 上面盒子 -->
+                  <div class="cin_c_i_c">
+                    <div class="cin_c_i_c_l clear-fix">
+                      <h3 class="left">时代全球影城（宝业东城店）</h3>
+                      <p class="right">19.9<span>元</span></p>
+                      </p>
+                    </div>
+                    <div class="cin_c_i_c_r clear-fix">
+                      <p class="left">瑶海区东二环与长江东路交叉口宝业东城广场
+                      <p class="right">11.2km</p>
+                    </div>
+                    <!-- 优惠 -->
+                    <div class="discount">
+                      <span class="cin_dis_gai">改签</span>
+                      <span class="cin_dis_zhe">折扣卡</span>
+                      <div class="cin_dis_foot">
+                        <span class="iconfont icon-hui"></span>
+                        <span>中国医生等5部影片特惠</span>
+                      </div>
+                      <div class="cin_dis_foot">
+                        <span class="iconfont icon-guanyingjilu"></span>
+                        <span>开卡特惠，9.9元起开卡</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 底部标签 -->
+                  <div></div>
+                </li>
+                <li>
+                  <!-- 上面盒子 -->
+                  <div class="cin_c_i_c">
+                    <div class="cin_c_i_c_l clear-fix">
+                      <h3 class="left">时代全球影城（宝业东城店）</h3>
+                      <p class="right">19.9<span>元</span></p>
+                      </p>
+                    </div>
+                    <div class="cin_c_i_c_r clear-fix">
+                      <p class="left">瑶海区东二环与长江东路交叉口宝业东城广场
+                      <p class="right">11.2km</p>
+                    </div>
+                    <!-- 优惠 -->
+                    <div class="discount">
+                      <span class="cin_dis_gai">改签</span>
+                      <span class="cin_dis_zhe">折扣卡</span>
+                      <div class="cin_dis_foot">
+                        <span class="iconfont icon-hui"></span>
+                        <span>中国医生等5部影片特惠</span>
+                      </div>
+                      <div class="cin_dis_foot">
+                        <span class="iconfont icon-guanyingjilu"></span>
+                        <span>开卡特惠，9.9元起开卡</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 底部标签 -->
+                  <div></div>
+                </li>
+                <li>
+                  <!-- 上面盒子 -->
+                  <div class="cin_c_i_c">
+                    <div class="cin_c_i_c_l clear-fix">
+                      <h3 class="left">时代全球影城（宝业东城店）</h3>
+                      <p class="right">19.9<span>元</span></p>
+                      </p>
+                    </div>
+                    <div class="cin_c_i_c_r clear-fix">
+                      <p class="left">瑶海区东二环与长江东路交叉口宝业东城广场
+                      <p class="right">11.2km</p>
+                    </div>
+                    <!-- 优惠 -->
+                    <div class="discount">
+                      <span class="cin_dis_gai">改签</span>
+                      <span class="cin_dis_zhe">折扣卡</span>
+                      <div class="cin_dis_foot">
+                        <span class="iconfont icon-hui"></span>
+                        <span>中国医生等5部影片特惠</span>
+                      </div>
+                      <div class="cin_dis_foot">
+                        <span class="iconfont icon-guanyingjilu"></span>
+                        <span>开卡特惠，9.9元起开卡</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 底部标签 -->
+                  <div></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="cin_c_item hidden">3</div>
+        </div>
+      </div>
+    </div>
+    <div class="content1 hidden">
+      <div class="show">
+        <h3>演出</h3>
+        <div class="show_head">
+          <div class="show_h_l">
+            <span class="iconfont icon-weizhi left"></span>
+            <p class="left">合肥</p>
+            <span class="iconfont icon-down2"></span>
+          </div>
+          <div class="show_h_r">
+            <span class="iconfont icon-sousuo"></span>
+            <input type="text" placeholder="找明星、演出、场馆">
+          </div>
+        </div>
+        <div class="show_center">
+          <!-- 金刚图 -->
+          <div class="show_nav">
+            <ul>
+              <li>
+                <span class="iconfont icon-yanchanghui"></span>
+                <p>演唱会</p>
+              </li>
+              <li>
+                <span class="iconfont icon-huajugeju"></span>
+                <p>话剧歌剧</p>
+              </li>
+              <li>
+                <span class="iconfont icon-yanchanghui"></span>
+                <p>休闲展览</p>
+              </li>
+              <li>
+                <span class="iconfont icon-xiangshengpingshu"></span>
+                <p>相声戏曲</p>
+              </li>
+              <li>
+                <span class="iconfont icon-qinzi"></span>
+                <p>亲自艺术</p>
+              </li>
+            </ul>
+          </div>
+          <div class="mustRob">
+            <div class="must_title">
+              <h3>今日必抢</h3>
+              <p>更多必抢<span class="iconfont icon-xiangyou1"></span></p>
+            </div>
+            <ul>
+              <li>
+                <div class="must_img">
+                  <img src="https://p1.meituan.net/movie/846bea292e5ea3985a4b53ea126284702880046.jpg@464w_644h_1e_1c"
+                    alt="">
+                </div>
+                <div class="must_foo">
+                  <p>
+                    <span class="iconfont icon-huohua-"></span>
+                    火热抢票中
+                  </p>
+                  <h4>斑马音乐嘉年华</h4>
+                </div>
+              </li>
+              <li>
+                <div class="must_img">
+                  <img src="https://p1.meituan.net/movie/846bea292e5ea3985a4b53ea126284702880046.jpg@464w_644h_1e_1c"
+                    alt="">
+                </div>
+                <div class="must_foo">
+                  <p class="one">
+                    <span class="iconfont icon-shuqian"></span>
+                    套票7.4折
+                  </p>
+                  <h4>开心麻花爆笑喜剧《贼想看到你》</h4>
+                </div>
+              </li>
+              <li>
+                <div class="must_img">
+                  <img src="https://p1.meituan.net/movie/846bea292e5ea3985a4b53ea126284702880046.jpg@464w_644h_1e_1c"
+                    alt="">
+                </div>
+                <div class="must_foo">
+                  <p class="two">
+                    <span class="iconfont icon-shijian"></span>
+                    本周演出
+                  </p>
+                  <h4>花乐脱口秀小剧透</h4>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="must_swiper">
+            <div class="swiper-container" id="swiper-3">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img
+                    src="https://p0.meituan.net/movie/9b61b29711f4606c06b994f0cc4f62091330713.png@465w_258h_1e_1c"
+                    alt=""></div>
+                <div class="swiper-slide"><img
+                    src="https://p0.meituan.net/movie/a65f416181b97127a0d58b6f0f3fb0f81328573.png@126w_126h_1e_1c"
+                    alt=""></div>
+                <div class="swiper-slide"><img
+                    src="https://p0.meituan.net/movie/9b61b29711f4606c06b994f0cc4f62091330713.png@465w_258h_1e_1c"
+                    alt=""></div>
+                <div class="swiper-slide"><img
+                    src="https://p0.meituan.net/movie/07bcf4655036883e69c5d06a5f5c4aaf1145374.jpg@126w_126h_1e_1c"
+                    alt=""></div>
+              </div>
+            </div>
+          </div>
+          <!-- 作家介绍 -->
+          <div class="must_avater clear-fix">
+            <h3>大咖动态</h3>
+            <ul>
+              <li>
+                <div class="must_a_i"><img
+                    src="https://p1.meituan.net/movie/875b6c782c43baeeb23a6249a19b093e28811.jpg@128w_170h_1e_1c" alt="">
+                </div>
+                <p>马斯屯</p>
+                <span>演出即将开始</span>
+              </li>
+              <li>
+                <div class="must_a_i"><img
+                    src="https://p1.meituan.net/movie/875b6c782c43baeeb23a6249a19b093e28811.jpg@128w_170h_1e_1c" alt="">
+                </div>
+                <p>马斯屯</p>
+                <span>演出即将开始</span>
+              </li>
+              <li>
+                <div class="must_a_i"><img
+                    src="https://p1.meituan.net/movie/875b6c782c43baeeb23a6249a19b093e28811.jpg@128w_170h_1e_1c" alt="">
+                </div>
+                <p>马斯屯</p>
+                <span>演出即将开始</span>
+              </li>
+              <li>
+                <div class="must_a_i"><img
+                    src="https://p1.meituan.net/movie/875b6c782c43baeeb23a6249a19b093e28811.jpg@128w_170h_1e_1c" alt="">
+                </div>
+                <p>马斯屯</p>
+                <span>演出即将开始</span>
+              </li>
+              <li>
+                <div class="must_a_i"><img
+                    src="https://p1.meituan.net/movie/875b6c782c43baeeb23a6249a19b093e28811.jpg@128w_170h_1e_1c" alt="">
+                </div>
+                <p>马斯屯</p>
+                <span>演出即将开始</span>
+              </li>
+              <li>
+                <div class="must_a_i"><img
+                    src="https://p1.meituan.net/movie/875b6c782c43baeeb23a6249a19b093e28811.jpg@128w_170h_1e_1c" alt="">
+                </div>
+                <p>马斯屯</p>
+                <span>演出即将开始</span>
+              </li>
+            </ul>
+          </div>
+          <!-- 为你推荐 -->
+          <div class="show_recommend">
+            <h3>为你推荐</h3>
+            <div class="show_r_c">
+              <ul>
+                <li>
+                  <div class="show_r_i"><img
+                      src="https://p1.meituan.net/movie/63cb3dbbaff624b236b2e22b2ee59cff1553093.jpg@464w_644h_1e_1c"
+                      alt=""></div>
+                  <p>[合肥]嘉年华</p>
+                  <span>2021.8.12/8.15</span>
+                  <p class="show_r_much">￥280起</p>
+                </li>
+                <li>
+                  <div class="show_r_i"><img
+                      src="https://p1.meituan.net/movie/63cb3dbbaff624b236b2e22b2ee59cff1553093.jpg@464w_644h_1e_1c"
+                      alt=""></div>
+                </li>
+                <li>
+                  <div class="show_r_i"><img
+                      src="https://p1.meituan.net/movie/63cb3dbbaff624b236b2e22b2ee59cff1553093.jpg@464w_644h_1e_1c"
+                      alt=""></div>
+                </li>
+                <li>
+                  <div class="show_r_i"><img
+                      src="https://p1.meituan.net/movie/63cb3dbbaff624b236b2e22b2ee59cff1553093.jpg@464w_644h_1e_1c"
+                      alt=""></div>
+                </li>
+                <li>
+                  <div class="show_r_i"><img
+                      src="https://p1.meituan.net/movie/63cb3dbbaff624b236b2e22b2ee59cff1553093.jpg@464w_644h_1e_1c"
+                      alt=""></div>
+                </li>
+                <li>
+                  <div class="show_r_i"><img
+                      src="https://p1.meituan.net/movie/63cb3dbbaff624b236b2e22b2ee59cff1553093.jpg@464w_644h_1e_1c"
+                      alt=""></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content1 hidden">
+      <!-- 用户头像 -->
+      <div class="fen_header">
+        <div class="fen_portrait clear-fix">
+          <h3>我的</h3>
+          <div class="fen_head left">
+            <img src="./img/123.jpg" alt="">
+          </div>
+          <div class="fen_title left">
+            <h2>嘴巴嘟嘟</h2>
+            <span class="iconfont icon-xiangyou1"></span>
+          </div>
+        </div>
+      </div>
+      <!-- 选项卡 -->
+      <div class="tttt">
+        <div class="fen_body">
+          <div class="fen_body1">
+            <div class="fen_car">
+            </div>
+            <div class="fen_car2">
+              <span class="iconfont icon-huiyuanzhongxin"></span>
+              <!-- 进度条 -->
+              <div class="fen_progress">
+                <div class="fen_cent clear-fix">
+                  <div class="progress left">
+                    <!-- 进度 -->
+                    <div class="bar">50%</div>
+                  </div>
+                  <div class="fen-wenzi left">
+                    <p class="title"><span class="hui">距离升级只差648成长</span><span class="more">升级攻略></span></p>
+                  </div>
+                </div>
+                <div class="come right">
+                  <p>进入</p>
+                </div>
+              </div>
+            </div>
+            <div class="fen_car3">
+              <h3>我的订单</h3>
+              <ul>
+                <li>
+                  <div class="movie"><span class="iconfont icon-dianying"></span>
+                    <p>电影票</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie"><span class="iconfont icon-yanchu-xianxing2-0"></span>
+                    <p>演出票</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie"><span class="iconfont icon-bofang"></span>
+                    <p>在线观影</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie"><span class="iconfont icon-gouwu"></span>
+                    <p>周边</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 卡卷中心 -->
+      <div class="CardCenter content-padding">
+        <h3>卡券中心</h3>
+        <ul>
+          <li class="li_color1">
+            <p class="big">优惠券</p>
+            <p>3张</p>
+          </li>
+          <li class="li_color2">
+            <p class="big">会员卡</p>
+            <p>1张</p>
+          </li>
+          <li class="li_color3">
+            <p class="big">猫享卡</p>
+            <p>6张</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 热门活动 -->
+      <div class="hotEvents content-padding">
+        <h3>热门活动</h3>
+        <ul>
+          <li>
+            <div class="hot_item"><span class="iconfont icon-rili"></span></div>
+            <p>签到领猫币</p>
+            <p class="hot_btn">猫币兑好礼</p>
+          </li>
+          <li>
+            <div class="hot_item"><span class="iconfont icon-weixin"></span></div>
+            <p>关注公众号</p>
+            <p class="hot_btn">分享好礼</p>
+          </li>
+          <li>
+            <div class="hot_item"><span class="iconfont icon-guanyingjilu"></span></div>
+            <p>1分钱观影</p>
+            <p class="hot_btn">开卡即令</p>
+          </li>
+          <li>
+            <div class="hot_item"><span class="iconfont icon-gouwu"></span></div>
+            <p>猫眼商城</p>
+            <p class="hot_btn">限时购周边</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="load-more">
+    <p>加载更多...</p>
+  </div>
+  <div class="footer">
+    <ul id="footer">
+    </ul>
+  </div>
+  <script src="./js/swiper.min.js"></script>
+  <script src="./js/flexible.js"></script>
+  <script src="./js/jquery-1.8.3.js"></script>
+  <script src="./js/common.js"></script>
+  <script>
+
+    let siwp = '';
+    let icon = '';
+    let reping1 = '';
+    let reping2 = '';
+    let reping3 = '';
+    let foot = '';
+    function dataJson(data) {
+      siperList(data)
+      weekendList(data)
+      // 获取页脚
+      footerList(data)
+    }
+    // 轮播图
+    function siperList(data) {
+      $.each(data.swiperList, function (index, data) {
+        siwp += '<div class="swiper-slide"><img src=' + data.imgUrl + ' /></div>';
+      })
+      $("#swiper-w").append(siwp)
+    }
+    // 金刚图
+    function iconList(data) {
+      $.each(data.iconList, function (index, data) {
+        icon += '<li><a href="#"><img src=' + data.imgUrl + '> <span>' + data.desc + '</span ></a> ' +
+          '</li > '
+      })
+      $("#fastnav-icon").append(icon)
+    }
+    // 电影list
+    function weekendList(data) {
+      $.each(data.move.hot, function (index, data) {
+        reping1 += ' <a href="detail.html?hot_id=' + data.hot_id + '" class="list-con">' +
+          '<div class="list-hidden" >' +
+          '<img src=' + data.imgUrl + ' alt=""> </div>' +
+          '<div class="list-title">' +
+          '<h3>' + data.title + '</h3>' +
+          '<p><span>编剧：</span>' + data.director + '</p>' +
+          '<p><span>类型：</span>' + data.type + '</p>' +
+          '<p><span>上映时间：</span>' + data.time + '</p>' +
+          '<p><span>评分：</span>' + data.score + '</p>' +
+          '</div>' +
+          '</a>'
+      })
+      $.each(data.move.expect, function (index, data) {
+        reping2 += ' <a href="detail.html?expect_id=' + data.expect_id + '" class="list-con">' +
+          '<div class="list-hidden" >' +
+          '<img src=' + data.imgUrl + ' alt=""> </div>' +
+          '<div class="list-title">' +
+          '<h3>' + data.title + '</h3>' +
+          '<p><span>编剧：</span>' + data.director + '</p>' +
+          '<p><span>类型：</span>' + data.type + '</p>' +
+          '<p><span>上映时间：</span>' + data.time + '</p>' +
+          '<p><span>评分：</span>' + data.score + '</p>' +
+          '</div>' +
+          '</a>'
+      })
+      $.each(data.move.list, function (index, data) {
+        reping3 += ' <a href="detail.html?list_id=' + data.list_id + '" class="list-con">' +
+          '<div class="list-hidden" >' +
+          '<img src=' + data.imgUrl + ' alt=""> </div>' +
+          '<div class="list-title">' +
+          '<h3>' + data.title + '</h3>' +
+          '<p><span>编剧：</span>' + data.director + '</p>' +
+          '<p><span>类型：</span>' + data.type + '</p>' +
+          '<p><span>上映时间：</span>' + data.time + '</p>' +
+          '<p><span>评分：</span>' + data.score + '</p>' +
+          '</div>' +
+          '</a>'
+      })
+      $("#con1").append(reping1);
+      $("#con2").append(reping2);
+      $("#con3").append(reping3);
+      listTab();
+    }
+    function listTab() {
+      // 原生js版本
+      let list_header = my$("list-header").children;
+      let list_center = my$("con").children;
+      for (let i = 0; i < list_header.length; i++) {
+        addEventListener(list_header[i], 'click', function () {
+          for (var j = 0; j < list_header.length; j++) {
+            list_header[j].className = "tit"
+            list_center[j].className = "mode hidden"
+          }
+          this.className = "active tit"
+          list_center[i].className = "mode"
+        })
+      }
+    }
+
+    function footerList(data) {
+      $.each(data.footer, function (index, data) {
+        foot += '<li>'
+          + '<a href="#">'
+          + '<img src=' + data.iconUrl + ' alt="">'
+          + '<p>' + data.name + '</p>'
+          + ' </a>'
+          + '</li>'
+      })
+      $("#footer").append(foot)
+      footerTab(data.footer)
+    }
+    //  页脚切换
+    function footerTab(data) {
+      // 底部footer tab
+      let footers = my$("footer").children;
+      let foot_cents = my$("center1").children;
+      // 第一次进来默认样式
+      getFirstElement(footers[0]3).className = "active";
+      getFirstElement(getFirstElement(footers[0])).src = data[0].iconUrlActive;
+      for (let i = 0; i < footers.length; i++) {
+        console.log(getFirstElement(footers[0]).className)
+        addEventListener(footers[i], 'click', function () {
+
+          for (var j = 0; j < footers.length; j++) {
+            getFirstElement(footers[j]).className = "";
+            getFirstElement(getFirstElement(footers[j])).src = data[j].iconUrl;
+            foot_cents[j].className = "hidden";
+          }
+          getFirstElement(this).className = "active";
+          getFirstElement(getFirstElement(this)).src = data[i].iconUrlActive;
+          foot_cents[i].className = ""
+        })
+      }
+    }
+
+    //  电影院切换
+    $(".cin_title li").click(function () {
+      $(this).addClass("active")
+      $(this).siblings().removeClass("active")
+      $(".cin_content .cin_c_item").eq($(this).index()).removeClass("hidden")
+      $(".cin_content .cin_c_item").eq($(this).index()).siblings().addClass("cin_c_item hidden")
+    })
+  </script>
+
+  <script type="text/javascript" src="./data/index.json?cb=dataJson"></script>
+  <script>
+    var swiper = new Swiper('#swiper-1', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    var swiper = new Swiper('#swiper-2', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    var swiper = new Swiper('#swiper-3', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    // 头像设置
+    // var x = document.getElementById("con2");
+    // function getLocation() {
+    //   if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(showPosition);
+    //   }
+    //   else { x.innerHTML = "Geolocation is not supported by this browser."; }
+    // }
+    // function showPosition(position) {
+    //   x.innerHTML = "Latitude: " + position.coords.latitude +
+    //     "<br />Longitude: " + position.coords.longitude;
+    // }
+
+  </script>
+</body>
+
+</html>
