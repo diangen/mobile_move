@@ -50,10 +50,14 @@
 }
 
 .nav .icon {
-  height: 0.467rem;
   width: 0.867rem;
-  line-height: 0.267rem;
-  margin-left: 0.4rem;
+  height: 0.467rem;
+  line-height: 0.467rem;
+  color: #fff;
+  font-size: 0.3rem;
+  border: 1px solid #dc4748;
+  border-radius: 0.1333rem;
+  margin: 0 0.3rem;
 }
 .nav .icon span {
   font-size: 0.6rem;

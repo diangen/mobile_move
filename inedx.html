@@ -27,11 +27,11 @@
       <div class="nav">
         <div class="empty"></div>
         <div class="input">
-          <span class="iconfont icon-sousuo2"></span>
+          <span class="iconfont icon-sousuo"></span>
           <input type="text" placeholder="请输入要搜索的内容">
         </div>
         <div class="icon">
-          <span class="iconfont icon-weimingmingwenjianjia_xiaoxi news"></span>
+          <a href="#">登录</a>
         </div>
       </div>
       <div class="fastnav">
@@ -647,7 +647,7 @@
       let footers = my$("footer").children;
       let foot_cents = my$("center1").children;
       // 第一次进来默认样式
-      getFirstElement(footers[0]3).className = "active";
+      getFirstElement(footers[0]).className = "active";
       getFirstElement(getFirstElement(footers[0])).src = data[0].iconUrlActive;
       for (let i = 0; i < footers.length; i++) {
         console.log(getFirstElement(footers[0]).className)
