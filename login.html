@@ -32,9 +32,11 @@
           <a href="#"><span class="iconfont icon-weixin"></span>
             微信登录</a>
         </button>
-        <button class="box_btn btn_color2">
-          账号密码登录
-        </button>
+        <a href="./user/user.html">
+          <button class="box_btn btn_color2">
+            账号密码登录
+          </button>
+        </a>
         <p class="color_p">手机号登录</p>
       </div>
     </div>
@@ -54,24 +56,25 @@
     //   }
     // });
 
-    let obj = new WxLogin({
-      id: "login_container", //div的id
-      appid: this.getQueryString("appid", data),
-      scope: this.getQueryString("scope", data),
-      redirect_uri: this.getQueryString("redirect_uri", data), //回调地址
-      state: this.getQueryString("state", data), //参数，可带可不带
-      style: "", //样式  提供"black"、"white"可选，默认为黑色文字描述
-      href: "" //自定义样式链接，第三方可根据实际需求覆盖默认样式。
-    });
-    function getQueryString(name, url) {
-      console.log("url", url)
-      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-      var r = url.substr(url.indexOf("?")).match(reg);
-      if (r != null) {
-        return unescape(r[2]);
-      }
-      return null;
-    }
+    // let obj = new WxLogin({
+    //   id: "login_container", //div的id
+    //   appid: this.getQueryString("appid", data),
+    //   scope: this.getQueryString("scope", data),
+    //   redirect_uri: this.getQueryString("redirect_uri", data), //回调地址
+    //   state: this.getQueryString("state", data), //参数，可带可不带
+    //   style: "", //样式  提供"black"、"white"可选，默认为黑色文字描述
+    //   href: "" //自定义样式链接，第三方可根据实际需求覆盖默认样式。
+    // });
+    // function getQueryString(name, url) {
+    //   console.log("url", url)
+    //   var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    //   var r = url.substr(url.indexOf("?")).match(reg);
+    //   if (r != null) {
+    //     return unescape(r[2]);
+    //   }
+    //   return null;
+    // }
+
   </script>
 </body>
 

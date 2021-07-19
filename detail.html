@@ -110,22 +110,23 @@
   }
 
   $.ajax({
-    type: "GET",
-    url: "http://localhost:8080/movie-api/movie/getById.do?id=" + id,
-    // dataType: 'json',
+    type: "POST",
+    url: "http://localhost:8080/movie-api/movie/getById.do",
+    data: {
+      'id': value
+    },
+    dataType: 'json',
     success: function (response) {
-      console.log(response)
       if (response.code = 100) {
-        // Str(response.data)
+        Str(response.data)
       }
     }
   });
 
   function Str(data) {
-    console.log(data)
-    let hotStr = '<h3>' + hot.title + '</h3>'
-      + '<p><span>主演:</span>' + hot.star + '</p>'
-      + '<p><span>上映时间:</span>' + hot.time + '</p>'
+    let hotStr = '<h3>' + data.movieName + '</h3>'
+      + '<p><span>主演:</span>' + data.movieStar + '</p>'
+      + '<p><span>上映时间:</span>' + data.movieReleaseDate + '</p>'
       + '<div class="ping" id="ping"><p class="score"><span>评分:</span></p>'
       + '<div class="rate"><div class="rating" id="rating">'
       + '<div class="rating-item"></div>'
@@ -133,36 +134,31 @@
       + '<div class="rating-item"></div>'
       + '<div class="rating-item"></div>'
       + '<div class="rating-item"></div>'
-      + '<div class="rating-item"></div>'
-      + '<div class="rating-item"></div>'
-      + '<div class="rating-item"></div>'
-      + '<div class="rating-item"></div>'
-      + '<div class="rating-item"></div>'
       + '</div>'
       + '</div></div>'
-      + '<p><span>电影口碑:</span>' + hot.reputation + '</p>'
-      + '<p><span>电影详情:</span>' + hot.deatil + '</p>'
+      + '<p><span>电影口碑:</span>' + data.movieDetailProfile + '</p>'
+      + '<p><span>电影详情:</span>' + data.deatil + '</p>'
       + '<div><p><span>演员介绍:</span></p>'
       + '<div class="picMarquee-left" >'
       + '<div class="bd">'
       + '<ul class="picList" id="picListDemo">'
       + '</ul></div>'
       + '</div>'
-    let bannerStr = '<img src=' + hot.imgDeatil + ' alt="">'
+    let bannerStr = '<img src=' + data.movieManPicture + ' alt="">'
     $("#detaiBanner").append(bannerStr)
     $("#content").append(hotStr)
 
-    pingfen(hot.score)
+    pingfen(data.movieExpectationValue)
     // 动态实现评论（事件委托）
     $("#rating").on('mouseover', '.rating-item', function () {
       pingfen($(this).index() + 1)
     }).on('mouseout', '.rating-item', function () {
-      pingfen(hot.score)
+      pingfen(data.movieExpectationValue)
     }).on('click', '.rating-item', function () {
-      hot.score = $(this).index() + 1
+      data.movieExpectationValue = $(this).index() + 1
     })
-    noswiper(hot);
-    pingjia(hot.evaluate)
+    // noswiper(data);
+    // pingjia(hot.evaluate)
   }
   // 判断点击界面详情
   // function detailValue(data) {
@@ -195,15 +191,17 @@
   })
   // 评分
   function pingfen(num) {
+    var num1 = num / 2
     $("#rating").find(".rating-item").each(function (index, data) {
       $('#rating').find('.rating-item').each(function (index) {
-        if (index < Math.floor(num)) {
+        if (index < Math.floor(num1)) {
           $(this).css('background-position', '0 0')
         } else {
           $(this).css('background-position', '-21px 0')
         }
       })
     })
+
   }
   // 评价
   function pingjia(data) {

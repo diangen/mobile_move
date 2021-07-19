@@ -19,20 +19,6 @@
     <div class="content1 ">
       <div class="swiper-container" id="swiper-1">
         <div class="swiper-wrapper" id="swiper-w">
-          <div class="swiper-slide"><img
-              src="https://p0.meituan.net/movie/b01bb862e3835cbf9271fd17cfd4aaf7447781.jpg@465w_258h_1e_1c" /></div>
-          <div class="swiper-slide">
-            <img src="https://p0.meituan.net/movie/cdca155a871bb7ece77e0bdccdebbb2f1123091.jpg@465w_258h_1e_1c"
-              alt="banner">
-          </div>
-          <div class="swiper-slide ">
-            <img src="https://p0.meituan.net/movie/012ed123f3cde35227a281fe39a5964a2375959.jpg@465w_258h_1e_1c"
-              alt="banner">
-          </div>
-          <div class="swiper-slide ">
-            <img src="https://p0.meituan.net/movie/5c98d16fc2e55666a402c42db38ca2fd201020.jpg@465w_258h_1e_1c"
-              alt="banner">
-          </div>
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>
@@ -50,30 +36,6 @@
       </div>
       <div class="fastnav">
         <ul id="fastnav-icon">
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png" alt="" />最新上映</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1711/df/86cbcfc533330d02.png" alt="" />热门电影</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png" alt="" />国内大片</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/35/2640cab202c41b02.png" alt="" />国际大片</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/d0/e09575e66f4aa402.png" alt="" />纪录片</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/59/569d3c096e542502.png" alt="" />TVB</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/17/4bd370f3eb1acd02.png" alt="" />台湾影视</a>
-          </li>
-          <li>
-            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/7f/b1ea3c8c7fb6db02.png" alt="" />大陆影视</a>
-          </li>
         </ul>
       </div>
       <div class="bg"></div>
@@ -703,18 +665,27 @@
         type: 1
       },
       success: function (response) {
-
         if (response.code == 100) {
-          // siperList(response.data)
           weekendList(response.data)
-          // 获取页脚
-          // footerList(response.data)
+        } else {
+
         }
       }
     });
-    console.log(1)
-  </script>
-  <script>
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:8080/movie-api/img/getImg.do",
+      dataType: 'json',
+      success: function (response) {
+        if (response.code == '100') {
+          // '0轮播；1金刚区；2页脚导航栏；'
+          siperList(response.data["0"])
+          iconList(response.data["1"])
+          footerList(response.data["2"])
+
+        }
+      }
+    });
 
     let siwp = '';
     let icon = '';
@@ -723,20 +694,20 @@
     let reping3 = '';
     let foot = '';
     // 轮播图
-    // function siperList(data) {
-    //   $.each(data.swiperList, function (index, data) {
-    //     siwp += '<div class="swiper-slide"><img src=' + data.imgUrl + ' /></div>';
-    //   })
-    //   $("#swiper-w").append(siwp)
-    // }
+    function siperList(data) {
+      $.each(data, function (index, data) {
+        siwp += '<div class="swiper-slide"><img src=' + data.imgBasePath + ' alert=' + data.imgTit + ' /></div>';
+      })
+      $("#swiper-w").append(siwp)
+    }
     // 金刚图
-    // function iconList(data) {
-    //   $.each(data.iconList, function (index, data) {
-    //     icon += '<li><a href="#"><img src=' + data.imgUrl + '> <span>' + data.desc + '</span ></a> ' +
-    //       '</li > '
-    //   })
-    //   $("#fastnav-icon").append(icon)
-    // }
+    function iconList(data) {
+      $.each(data, function (index, data) {
+        icon += '<li><a href="#"><img src=' + data.imgBasePath + '> <span>' + data.imgTit + '</span ></a> ' +
+          '</li > '
+      })
+      $("#fastnav-icon").append(icon)
+    }
     // 电影list
     function weekendList(data) {
       $.each(data, function (index, data) {
@@ -797,16 +768,16 @@
     }
 
     function footerList(data) {
-      $.each(data.footer, function (index, data) {
+      $.each(data, function (index, data) {
         foot += '<li>'
           + '<a href="#">'
-          + '<img src=' + data.iconUrl + ' alt="">'
-          + '<p>' + data.name + '</p>'
+          + '<img src=' + data.imgBasePath + ' alt="">'
+          + '<p>' + data.imgTit + '</p>'
           + ' </a>'
           + '</li>'
       })
       $("#footer").append(foot)
-      footerTab(data.footer)
+      footerTab(data)
     }
     //  页脚切换
     function footerTab(data) {
@@ -815,18 +786,18 @@
       let foot_cents = my$("center1").children;
       // 第一次进来默认样式
       getFirstElement(footers[0]).className = "active";
-      getFirstElement(getFirstElement(footers[0])).src = data[0].iconUrlActive;
+      getFirstElement(getFirstElement(footers[0])).src = data[0].imgSelectedPath;
       for (let i = 0; i < footers.length; i++) {
         console.log(getFirstElement(footers[0]).className)
         addEventListener(footers[i], 'click', function () {
 
           for (var j = 0; j < footers.length; j++) {
             getFirstElement(footers[j]).className = "";
-            getFirstElement(getFirstElement(footers[j])).src = data[j].iconUrl;
+            getFirstElement(getFirstElement(footers[j])).src = data[j].imgBasePath;
             foot_cents[j].className = "hidden";
           }
           getFirstElement(this).className = "active";
-          getFirstElement(getFirstElement(this)).src = data[i].iconUrlActive;
+          getFirstElement(getFirstElement(this)).src = data[i].imgSelectedPath;
           foot_cents[i].className = ""
         })
       }
