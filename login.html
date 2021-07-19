@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./font/iconfont.css">
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+
+  <div class="box">
+    <!-- 头部导航栏 -->
+    <div class="nav">
+      <a href="#">
+        <span class="iconfont icon-xiangzuo-copy"></span>
+      </a>
+    </div>
+    <div class="center">
+      <h3>欢迎登录猫眼电影</h3>
+      <p>
+        <span class="iconfont"></span>
+        新手机号将自动注册,已详读并同意<a href="#" class="color_p">豆瓣使用协议、个
+          人信息保护政策</a>
+      </p>
+      <div class="btn">
+        <button class="box_btn btn_color1">
+          <a href="#"><span class="iconfont icon-weixin"></span>
+            微信登录</a>
+        </button>
+        <button class="box_btn btn_color2">
+          账号密码登录
+        </button>
+        <p class="color_p">手机号登录</p>
+      </div>
+    </div>
+  </div>
+  <div className={styles.login_container} id="login_container"></div>
+
+  <script src="./js/flexible.js"></script>
+  <script src="./js/jquery-1.8.3.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+  <script>
+    // $.ajax({
+    //   type: "get",
+    //   url: "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code",
+    //   success: function (response) {
+
+    //   }
+    // });
+
+    let obj = new WxLogin({
+      id: "login_container", //div的id
+      appid: this.getQueryString("appid", data),
+      scope: this.getQueryString("scope", data),
+      redirect_uri: this.getQueryString("redirect_uri", data), //回调地址
+      state: this.getQueryString("state", data), //参数，可带可不带
+      style: "", //样式  提供"black"、"white"可选，默认为黑色文字描述
+      href: "" //自定义样式链接，第三方可根据实际需求覆盖默认样式。
+    });
+    function getQueryString(name, url) {
+      console.log("url", url)
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+      var r = url.substr(url.indexOf("?")).match(reg);
+      if (r != null) {
+        return unescape(r[2]);
+      }
+      return null;
+    }
+  </script>
+</body>
+
+</html>

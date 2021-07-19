@@ -1,0 +1,80 @@
+.box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+  font-size: 0.3667rem;
+}
+.nav {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  display: flex;
+  justify-content: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav span {
+  width: 0.2667rem;
+  height: 100%;
+  font-size: 0.4rem;
+  display: inline-block;
+}
+.nav h3 {
+  font-size: 0.4267rem;
+  margin: 0 auto;
+}
+.information {
+  width: 100%;
+  margin-top: 0.6rem;
+}
+.information h4 {
+  text-align: left;
+  color: #ccc;
+  font-size: 0.3467rem;
+}
+.information ul li {
+  height: 1.4667rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.information ul {
+  border-bottom: 1px solid #ccc;
+}
+.information ul li p {
+  font-size: 0.3833rem;
+  color: #000;
+}
+.information ul li .rig {
+  /* width: 2rem; */
+  display: flex;
+  align-items: center;
+}
+.information ul li .avater {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 0 0.2rem;
+}
+.information ul li .avater-p {
+  font-size: 0.3467rem;
+  margin: 0 0.2rem;
+}
+.information ul li .avater-p .active {
+  width: 1.5733rem;
+  height: 0.5267rem;
+  line-height: 0.5267rem;
+  text-align: center;
+  border-radius: 0.12rem;
+  color: #7fc785;
+  background-color: #e9f7eb;
+}
+.information ul li .avater img {
+  border-radius: 50%;
+}
+.information ul li span {
+  font-size: 0.3333rem;
+}
+.information img {
+  width: 100%;
+  height: 100%;
+}
