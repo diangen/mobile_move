@@ -19,6 +19,20 @@
     <div class="content1 ">
       <div class="swiper-container" id="swiper-1">
         <div class="swiper-wrapper" id="swiper-w">
+          <div class="swiper-slide"><img
+              src="https://p0.meituan.net/movie/b01bb862e3835cbf9271fd17cfd4aaf7447781.jpg@465w_258h_1e_1c" /></div>
+          <div class="swiper-slide">
+            <img src="https://p0.meituan.net/movie/cdca155a871bb7ece77e0bdccdebbb2f1123091.jpg@465w_258h_1e_1c"
+              alt="banner">
+          </div>
+          <div class="swiper-slide ">
+            <img src="https://p0.meituan.net/movie/012ed123f3cde35227a281fe39a5964a2375959.jpg@465w_258h_1e_1c"
+              alt="banner">
+          </div>
+          <div class="swiper-slide ">
+            <img src="https://p0.meituan.net/movie/5c98d16fc2e55666a402c42db38ca2fd201020.jpg@465w_258h_1e_1c"
+              alt="banner">
+          </div>
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>
@@ -36,6 +50,30 @@
       </div>
       <div class="fastnav">
         <ul id="fastnav-icon">
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png" alt="" />最新上映</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1711/df/86cbcfc533330d02.png" alt="" />热门电影</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png" alt="" />国内大片</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/35/2640cab202c41b02.png" alt="" />国际大片</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/d0/e09575e66f4aa402.png" alt="" />纪录片</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/59/569d3c096e542502.png" alt="" />TVB</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/17/4bd370f3eb1acd02.png" alt="" />台湾影视</a>
+          </li>
+          <li>
+            <a href="#"><img src="http://img1.qunarzz.com/piao/fusion/1611/7f/b1ea3c8c7fb6db02.png" alt="" />大陆影视</a>
+          </li>
         </ul>
       </div>
       <div class="bg"></div>
@@ -659,10 +697,19 @@
 
     $.ajax({
       type: "GET",
-      url: "http://localhost:8080/movie-api/movie/getByType.do?type=1",
-      contentType: "application/x-www-form-urlencoded",
+      url: "http://localhost:8080/movie-api/movie/getByType.do",
+      dataType: 'json',
+      data: {
+        type: 1
+      },
       success: function (response) {
-        console.log(response)
+
+        if (response.code == 100) {
+          // siperList(response.data)
+          weekendList(response.data)
+          // 获取页脚
+          // footerList(response.data)
+        }
       }
     });
     console.log(1)
@@ -675,65 +722,56 @@
     let reping2 = '';
     let reping3 = '';
     let foot = '';
-    function dataJson(data) {
-      siperList(data)
-      weekendList(data)
-      // 获取页脚
-      footerList(data)
-    }
     // 轮播图
-    function siperList(data) {
-      $.each(data.swiperList, function (index, data) {
-        siwp += '<div class="swiper-slide"><img src=' + data.imgUrl + ' /></div>';
-      })
-      $("#swiper-w").append(siwp)
-    }
+    // function siperList(data) {
+    //   $.each(data.swiperList, function (index, data) {
+    //     siwp += '<div class="swiper-slide"><img src=' + data.imgUrl + ' /></div>';
+    //   })
+    //   $("#swiper-w").append(siwp)
+    // }
     // 金刚图
-    function iconList(data) {
-      $.each(data.iconList, function (index, data) {
-        icon += '<li><a href="#"><img src=' + data.imgUrl + '> <span>' + data.desc + '</span ></a> ' +
-          '</li > '
-      })
-      $("#fastnav-icon").append(icon)
-    }
+    // function iconList(data) {
+    //   $.each(data.iconList, function (index, data) {
+    //     icon += '<li><a href="#"><img src=' + data.imgUrl + '> <span>' + data.desc + '</span ></a> ' +
+    //       '</li > '
+    //   })
+    //   $("#fastnav-icon").append(icon)
+    // }
     // 电影list
     function weekendList(data) {
-      $.each(data.move.hot, function (index, data) {
-        reping1 += ' <a href="detail.html?hot_id=' + data.hot_id + '" class="list-con">' +
+      $.each(data, function (index, data) {
+        reping1 += ' <a href="detail.html?id=' + data.movieId + '" class="list-con">' +
           '<div class="list-hidden" >' +
-          '<img src=' + data.imgUrl + ' alt=""> </div>' +
+          '<img src=' + data.movieManPicture + ' alt=""> </div>' +
           '<div class="list-title">' +
-          '<h3>' + data.title + '</h3>' +
-          '<p><span>编剧：</span>' + data.director + '</p>' +
-          '<p><span>类型：</span>' + data.type + '</p>' +
-          '<p><span>上映时间：</span>' + data.time + '</p>' +
-          '<p><span>评分：</span>' + data.score + '</p>' +
+          '<h3>' + data.movieName + '</h3>' +
+          '<p><span>主演：</span>' + data.moviePerformer + '</p>' +
+          '<p><span>上映时间：</span>' + data.movieReleaseDate + '</p>' +
+          '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
           '</div>' +
           '</a>'
       })
-      $.each(data.move.expect, function (index, data) {
-        reping2 += ' <a href="detail.html?expect_id=' + data.expect_id + '" class="list-con">' +
+      $.each(data, function (index, data) {
+        reping2 += ' <a href="detail.html?id=' + data.movieId + '" class="list-con">' +
           '<div class="list-hidden" >' +
-          '<img src=' + data.imgUrl + ' alt=""> </div>' +
+          '<img src=' + data.movieManPicture + ' alt=""> </div>' +
           '<div class="list-title">' +
-          '<h3>' + data.title + '</h3>' +
-          '<p><span>编剧：</span>' + data.director + '</p>' +
-          '<p><span>类型：</span>' + data.type + '</p>' +
-          '<p><span>上映时间：</span>' + data.time + '</p>' +
-          '<p><span>评分：</span>' + data.score + '</p>' +
+          '<h3>' + data.movieName + '</h3>' +
+          '<p><span>主演：</span>' + data.moviePerformer + '</p>' +
+          '<p><span>上映时间：</span>' + data.movieReleaseDate + '</p>' +
+          '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
           '</div>' +
           '</a>'
       })
-      $.each(data.move.list, function (index, data) {
-        reping3 += ' <a href="detail.html?list_id=' + data.list_id + '" class="list-con">' +
+      $.each(data, function (index, data) {
+        reping3 += ' <a href="detail.html?id=' + data.movieId + '" class="list-con">' +
           '<div class="list-hidden" >' +
-          '<img src=' + data.imgUrl + ' alt=""> </div>' +
+          '<img src=' + data.movieManPicture + ' alt=""> </div>' +
           '<div class="list-title">' +
-          '<h3>' + data.title + '</h3>' +
-          '<p><span>编剧：</span>' + data.director + '</p>' +
-          '<p><span>类型：</span>' + data.type + '</p>' +
-          '<p><span>上映时间：</span>' + data.time + '</p>' +
-          '<p><span>评分：</span>' + data.score + '</p>' +
+          '<h3>' + data.movieName + '</h3>' +
+          '<p><span>主演：</span>' + data.moviePerformer + '</p>' +
+          '<p><span>上映时间：</span>' + data.movieReleaseDate + '</p>' +
+          '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
           '</div>' +
           '</a>'
       })
@@ -803,15 +841,13 @@
     })
   </script>
 
-  <script type="text/javascript" src="./data/index.json?cb=dataJson"></script>
   <script>
     var swiper = new Swiper('#swiper-1', {
-      spaceBetween: 0,
-      centeredSlides: true,
       loop: true,
       autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
+        delay: 1000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true
       },
     });
     var swiper = new Swiper('#swiper-2', {

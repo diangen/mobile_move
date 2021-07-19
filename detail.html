@@ -86,7 +86,8 @@
 
 <script>
 
-  // 获取url中传参
+
+  // 获取url中传参id
   function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -108,10 +109,20 @@
     value = a[key];
   }
 
-  function Str(data, id) {
-    let hot = data.find(function (item) {
-      return item[id] === value;
-    })
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:8080/movie-api/movie/getById.do?id=" + id,
+    // dataType: 'json',
+    success: function (response) {
+      console.log(response)
+      if (response.code = 100) {
+        // Str(response.data)
+      }
+    }
+  });
+
+  function Str(data) {
+    console.log(data)
     let hotStr = '<h3>' + hot.title + '</h3>'
       + '<p><span>主演:</span>' + hot.star + '</p>'
       + '<p><span>上映时间:</span>' + hot.time + '</p>'
@@ -154,19 +165,19 @@
     pingjia(hot.evaluate)
   }
   // 判断点击界面详情
-  function detailValue(data) {
-    if ("hot_id" == id) {
-      Str(data.hot, id)
-    } else if ("expect_id" == id) {
-      Str(data.expect, id)
-    } else if ("list_id" == id) {
-      Str(data.list, id)
-    }
-  }
-  // 回调函数返回数据
-  function dataJson(data) {
-    detailValue(data.move)
-  }
+  // function detailValue(data) {
+  //   if ("hot_id" == id) {
+  //     Str(data.hot, id)
+  //   } else if ("expect_id" == id) {
+  //     Str(data.expect, id)
+  //   } else if ("list_id" == id) {
+  //     Str(data.list, id)
+  //   }
+  // }
+  // // 回调函数返回数据
+  // function dataJson(data) {
+  //   detailValue(data.move)
+  // }
   //  无缝链接图片
   function noswiper(data) {
     let picStr = '';
@@ -215,7 +226,6 @@
 </script>
 
 
-<script type="text/javascript" src="./data/index.json?cb=dataJson"></script>
 <script src="./js/jquery.SuperSlide.2.1.3.js"></script>
 <script type="text/javascript">
   $(".picMarquee-left").slide({
