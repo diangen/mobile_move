@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="stylesheet" href="css/swiper.min.css">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./font/iconfont.css">
@@ -30,15 +32,19 @@
           <span class="iconfont icon-sousuo"></span>
           <input type="text" placeholder="请输入要搜索的内容">
         </div>
-        <div class="icon">
-          <a href="./login.html">登录</a>
+        <div class="nav_i">
+          <div class="icon " id="loginUser">
+            <a href="./login.html">登录</a>
+          </div>
         </div>
+
       </div>
       <div class="fastnav">
         <ul id="fastnav-icon">
         </ul>
       </div>
       <div class="bg"></div>
+
       <div class="list">
         <div class="list-header" id="list-header">
           <div class="tit active">
@@ -54,13 +60,13 @@
         <div class="list-content" id="con">
           <div class="mode" id="con1">
           </div>
-          <div class="mode hidden" id="con2"></div>
-          <div class="mode hidden" id="con3"></div>
+          <div class="mode hide" id="con2"></div>
+          <div class="mode hide" id="con3"></div>
         </div>
       </div>
 
     </div>
-    <div class="content1 hidden">
+    <div class="content1 hide">
       <div class="cinema">
         <div class="cin_header">
           <!-- 下拉框 -->
@@ -87,7 +93,7 @@
           </ul>
         </div>
         <div class="cin_content">
-          <div class="cin_c_item hidden">1</div>
+          <div class="cin_c_item hide">1</div>
           <div class="cin_c_item">
             <div class="cin_c_item_swiper">
               <div class="swiper-container" id="swiper-2">
@@ -213,7 +219,7 @@
               </ul>
             </div>
           </div>
-          <div class="cin_c_item hidden">
+          <div class="cin_c_item hide">
             <div class="cin_c_i_p">
               <div class="cin_c_item_list">
                 <h3>待映推荐</h3>
@@ -334,7 +340,7 @@
         </div>
       </div>
     </div>
-    <div class="content1 hidden">
+    <div class="content1 hide">
       <div class="show">
         <h3>演出</h3>
         <div class="show_head">
@@ -531,7 +537,7 @@
         </div>
       </div>
     </div>
-    <div class="content1 hidden">
+    <div class="content1 hide">
       <!-- 用户头像 -->
       <div class="fen_header">
         <div class="fen_portrait clear-fix">
@@ -644,9 +650,7 @@
       </div>
     </div>
   </div>
-  <div class="load-more">
-    <p>加载更多...</p>
-  </div>
+
   <div class="footer">
     <ul id="footer">
     </ul>
@@ -655,10 +659,10 @@
   <script src="./js/flexible.js"></script>
   <script src="./js/jquery-1.8.3.js"></script>
   <script src="./js/common.js"></script>
+  <script src="./js/iscroll.js"></script>
   <script src="./js/mode/index.js"></script>
-
   <script>
-   
+    
   </script>
 
 </body>

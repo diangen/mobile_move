@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../font/iconfont.css">
   <link rel="stylesheet" href="../css/user/user.css">
+  <link rel="stylesheet" href="../mobile/need/layer.css">
 </head>
 
 <body>
 
   <div class="box">
     <!-- 头部导航栏 -->
+
     <div class="nav">
       <a href="../login.html">
         <span class="iconfont icon-xiangzuo-copy"></span>
@@ -28,42 +30,117 @@
           人信息保护政策</a>
       </p>
       <div class="btn">
-        <input type="text" name="username" id="username" placeholder="请输入账号">
-        <input type="password" name="password" id="password" placeholder="请输入密码">
-        <button class="box_btn" id="subimt">登录</button>
+        <form id="loginForm">
+          <input type="text" name="username" value="" id="username" placeholder="请输入账号">
+          <input type="password" name="password" value="" id="password" placeholder="请输入密码">
+          <button type="submit" class="box_btn" id="subimt">登录</button>
+        </form>
       </div>
     </div>
   </div>
 
   <script src="../js/flexible.js"></script>
   <script src="../js/jquery-1.8.3.js"></script>
+  <script src="../js/jquery.validate.js"></script>
   <script src="../js/common.js"></script>
+  <script src="../mobile/layer.js"></script>
   <script>
+    // sessionStorage.setItem('returnUrl', 1)
+    // console.log(sessionStorage.getItem('returnUrl'))
+    // 登录Form
+    // 表单验证
+    $(document).ready(function () {
+      $('#loginForm').validate({
+        rules: {
+          username: {
+            required: true
+          },
+          password: {
+            required: true
+          }
+        },
+        messages: {
+          username: {
+            required: "登录用户名不能为空"
+          },
+          password: {
+            required: "登录密码不能为空"
+          }
+        },
+        submitHandler: function (form) {
+          $.ajax({
+            dataType: "json",
+            type: "get", // 提交方式 get/post
+            url: base + '/user/login.do', // 需要提交的 url
+            data: $("#loginForm").serialize(),
+            success: function (data) {
+              // 登录成功或者失败的提示信息
+              if (data.code == 100) {
+                layer.open({
+                  type: 2
+                  , content: '加载中'
+                  , time: 2
+                });
+                window.localStorage.setItem("Token", data.data.token);
+                window.location.href = 'http://localhost:8081/inedx.html'
+              } else {
+                layer.open({
+                  content: '请输入正确用户名和密码'
+                  , skin: 'msg'
+                  , time: 3 //2秒后自动关闭
+                });
+              }
+            }
+          });
+          return false;
+        }
+      });
+    })
+
+
+
+  </script>
+  <!-- <script>
     $("#subimt").click(function () {
       var name = $("#username").val()
       var pass = $("#password").val()
       $.ajax({
         type: "GET",
-        url: "http://localhost:8080/movie-api/user/login.do",
+        url: base + "/user/login.do",
         data: {
           username: name,
           password: pass
         },
         dataType: "json",
         success: function (response) {
-          console.log(response)
           if (response.code == 100) {
             // 成功
-            alert(response.msg)
-          } else if (response.code == 200) {
-            alert(response.msg)
+            //loading带文字
+            layer.open({
+              type: 2
+              , content: '加载中'
+              , time: 2
+            });
+            // localStorage.setItem('token', response.data.token)
+            // self.location.href = "../index.html"
+            if (sessionStorage.getItem('returnUrl')) {
+              window.location.href = sessionStorage.getItem('returnUrl')
+            } else {
+              window.localStorage.href = "/"
+            }
+            // 如果缓存没有 直接跳转到默认路径<br>}
           } else {
-            alert(response.msg)
+            //提示
+            layer.open({
+              content: '请输入正确用户名和密码'
+              , skin: 'msg'
+              , time: 3 //2秒后自动关闭
+            });
           }
         }
       });
     })
-  </script>
+  </script> -->
 </body>
 
 </html>

@@ -290,3 +290,60 @@ Object.defineProperty(window, 'base', {
   value: "http://localhost:8080/movie-api",
   writable: false
 })
+
+// 格式化时间
+// var da = '2021-07-19 00:00:00';
+
+function newDate(value) {
+  return /\d{4}-\d{1,2}-\d{1,2}/g.exec(value)
+}
+// console.log(newDate(da)[0])
+
+
+// 获取url中传参id
+function GetRequest() {
+  var url = location.search; //获取url中"?"符后的字串
+  var theRequest = new Object();
+  if (url.indexOf("?") != -1) {
+    var str = url.substr(1);
+    strs = str.split("&");
+    for (var i = 0; i < strs.length; i++) {
+      theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+    }
+  }
+  return theRequest;
+}
+
+
+// function getSubPost(para, obj, callback) {
+//   const IP = base + para;
+//   axios.get(IP, obj, {
+//     headers: { Authorization: `Bearer ${Base.token}` }
+//   })
+//     .then((res) => {
+//       callback(res.data);
+//     }).catch((error) => {
+//       if (error.response.status != '504') {
+//         callback({ message: `请求接口报错！错误码：${error.response.status}` });
+//       } else {
+//         callback({ message: '请求超时，请重试。' });
+//       }
+//     });
+// }
+
+function updateType(para, type) {
+  $.ajax({
+    url: base + para,
+    type: "get",
+    contentType: "application/json",
+    dataType: 'json',
+    beforeSend: function (XMLHttpRequest) {
+      XMLHttpRequest.setRequestHeader("token", localStorage.token);
+    },
+    success: function (result) {
+      console.log(result)
+    }
+  });
+
+
+}

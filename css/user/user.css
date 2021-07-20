@@ -66,3 +66,9 @@ textarea:-ms-input-placeholder {
   border-radius: 0.2667rem;
   background-color: #56c65b;
 }
+
+#loginForm label.error {
+  color: Red;
+  margin: 0.2rem 0;
+  float: left;
+}
