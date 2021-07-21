@@ -38,14 +38,27 @@
   margin: 0.1333rem 0;
   line-height: 0.6333rem;
 }
-.content p span {
+.content p span,
+.content span {
   color: #666666;
+  font-size: 0.426666rem;
   margin-right: 0.4333rem;
 }
-.content .score {
-  color: #f00;
-  display: inline-block;
+.content div .duohang1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
+.content div .duohang2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
 .ping {
   display: flex;
   justify-content: left;
@@ -190,20 +203,26 @@
   padding: 0.2rem;
 }
 /* 蒙层 */
-body.modal-open {
+.modal-open1 {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(66, 65, 65, 0.5);
-  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 200;
 }
+.hidden {
+  display: none;
+}
+
 .add_pinglun {
   position: fixed;
   top: 30%;
   left: 0;
   right: 0;
   margin: auto;
-  z-index: 9999;
+  z-index: 999;
   width: 80%;
   background-color: #fff;
   border-radius: 0.3667rem;

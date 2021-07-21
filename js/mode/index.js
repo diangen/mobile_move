@@ -37,9 +37,6 @@ function movieAjax(i) {
         weekendList(response.data.list || 0);
       }
     },
-    error: function (param) {
-      alert("!")
-    }
   });
 }
 
@@ -54,7 +51,7 @@ function weekendList(data) {
       '<img src=' + data.movieManPicture + ' alt=""> </div>' +
       '<div class="list-title">' +
       '<h3>' + data.movieName + '</h3>' +
-      '<p><span>主演：</span>' + data.moviePerformer + '</p>' +
+      '<div class="list-title-more"><span>主演：</span><p class="yichu">' + data.movieStar + '</p></div>' +
       '<p><span>上映时间：</span>' + newDate(newDate(data.movieReleaseDate)[0])[0] + '</p>' +
       '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
       '</div>' +
@@ -66,7 +63,7 @@ function weekendList(data) {
       '<img src=' + data.movieManPicture + ' alt=""> </div>' +
       '<div class="list-title">' +
       '<h3>' + data.movieName + '</h3>' +
-      '<p><span>主演：</span>' + data.moviePerformer + '</p>' +
+      '<p><span>主演：</span>' + data.movieStar + '</p>' +
       '<p><span>上映时间：</span>' + newDate(data.movieReleaseDate)[0] + '</p>' +
       '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
       '</div>' +
@@ -78,7 +75,7 @@ function weekendList(data) {
       '<img src=' + data.movieManPicture + ' alt=""> </div>' +
       '<div class="list-title">' +
       '<h3>' + data.movieName + '</h3>' +
-      '<p><span>主演：</span>' + data.moviePerformer + '</p>' +
+      '<p><span>主演：</span>' + data.movieStar + '</p>' +
       '<p><span>上映时间：</span>' + newDate(data.movieReleaseDate)[0] + '</p>' +
       '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
       '</div>' +
@@ -106,9 +103,6 @@ function otherAjax(i) {
           footerList(response.data["2"])
         }
       },
-      error: function (param) {
-        alert("!")
-      }
     });
   }
 }
@@ -164,7 +158,6 @@ function footerTab(data) {
       getFirstElement(this).className = "active";
       getFirstElement(getFirstElement(this)).src = data[i].imgSelectedPath;
       foot_cents[i].className = "";
-      getSubGet()
     })
   }
 }
@@ -203,6 +196,38 @@ function Swiper1(id) {
       disableOnInteraction: true
     },
   });
+}
+
+// 个人信息设置
+perAjax();
+function perAjax() {
+  $.ajax({
+    type: "get",
+    url: base + "/user/getUserInfo.do",
+    data: {
+      Authorization: localStorage.token
+    },
+    dataType: "json",
+    success: function (response) {
+      if (response.code = 100) {
+        persion(response.data)
+      }
+    }
+  });
+}
+function persion(data) {
+  let per = '';
+  per = `
+   <h3>我的</h3>
+    <div class="fen_head left">
+      <img src="${data.userHeadPicture}" alt="">
+    </div>
+    <div class="fen_title left">
+      <h2>${data.userName}</h2>
+    <a href="./settings.html?userId="${data.userId}><span class="iconfont icon-xiangyou1"></span></a>
+  </div>
+  `;
+  $(".fen_portrait").append(per);
 }
 
 //  上拉刷新

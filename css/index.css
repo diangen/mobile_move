@@ -154,15 +154,27 @@
 }
 .list-con .list-title h3 {
   font-size: 0.326666rem;
-  margin: 0 0 0.366666rem 0;
+  margin: 0.1rem 0 0.366666rem 0;
   line-height: 0.4rem;
   font-weight: 800;
 }
+.mode .list-title .list-title-more {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
 .mode .list-title p {
+  width: 100%;
   font-size: 0.373333rem;
   display: block;
-  margin: 0 0 0.166666rem 0;
-  /* 溢出文本 */
+  margin: 0.18rem 0 0.166666rem 0;
+}
+.mode .list-title .yichu {
+  display: inline-block;
+  width: 70%;
+  white-space: nowrap; /* 不换行 */
+  overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
 }
 .mode .list-title p span {
   color: #666;

@@ -22,12 +22,48 @@
     <!-- 设置个人信息 -->
     <div class="information">
       <h4>个人资料</h4>
-      <ul>
-        <li>
+      <ul id="set_infor1">
+
+      </ul>
+    </div>
+    <!-- 账号设置 -->
+    <div class="information">
+      <h4>账号设置</h4>
+      <ul id="set_infor2">
+
+      </ul>
+    </div>
+  </div>
+
+  <script src="./js/flexible.js"></script>
+  <script src="./js/jquery-1.8.3.js"></script>
+  <script src="./js/common.js"></script>
+  <script>
+    $("#setBack").click(function () {
+      window.history.back();
+    })
+
+    $.ajax({
+      type: "get",
+      url: base + "/user/getUserInfo.do",
+      data: {
+        Authorization: localStorage.token
+      },
+      dataType: "json",
+      success: function (response) {
+        if (response.code = 100) {
+          per_set1(response.data)
+          per_set2(response.data)
+        }
+      }
+    });
+    function per_set1(data) {
+      let str = `
+         <li>
           <p>头像</p>
           <div class="rig">
             <div class="avater">
-              <img src="./img/123.jpg" alt="">
+              <img src="${data.userHeadPicture}" alt="">
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
@@ -37,7 +73,7 @@
           <p>个人ID</p>
           <div class="rig">
             <div class="avater-p">
-              <p>1234567</p>
+              <p>${data.userNickname}</p>
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
@@ -47,7 +83,7 @@
           <p>昵称</p>
           <div class="rig">
             <div class="avater-p">
-              <p>嘴巴嘟赌</p>
+              <p>${data.userName}</p>
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
@@ -57,7 +93,7 @@
           <p>性别</p>
           <div class="rig">
             <div class="avater-p">
-              <p>男</p>
+              <p>${data.userSex}</p>
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
@@ -67,7 +103,7 @@
           <p>长居地</p>
           <div class="rig">
             <div class="avater-p">
-              <p>合肥</p>
+              <p>${data.userPermanentResidence}</p>
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
@@ -76,18 +112,19 @@
           <p>家乡</p>
           <div class="rig">
             <div class="avater-p">
-              <p></p>
+              <p>${data.userHometown}</p>
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
         </li>
-      </ul>
-    </div>
-    <!-- 账号设置 -->
-    <div class="information">
-      <h4>账号设置</h4>
-      <ul>
-        <li>
+      `;
+      $("#set_infor1").append(str)
+
+    }
+    function per_set2(data) {
+      let str = `
+      
+           <li>
           <p>设置密码</p>
           <div class="rig">
             <div class="avater-p">
@@ -99,7 +136,7 @@
           <p>手机号</p>
           <div class="rig">
             <div class="avater-p">
-              <p></p>
+              <p>${data.userTel}</p>
             </div>
             <span class="iconfont icon-xiangyou1"></span>
           </div>
@@ -143,25 +180,24 @@
           </div>
         </li>
         <li>
-          <p>退出用户</p>
-          <div class="rig">
-            <div class="avater-p">
-            </div>
-            <span class="iconfont icon-xiangyou1"></span>
-          </div>
+          <p id="boxLayout" class="box_btn">退出用户</p>
         </li>
-      </ul>
-    </div>
-  </div>
+      `;
+      $("#set_infor2").append(str)
+    }
 
-  <script src="./js/flexible.js"></script>
-  <script src="./js/jquery-1.8.3.js"></script>
-  <script src="./js/common.js"></script>
-  <script>
-    $("#setBack").click(function () {
-      window.history.back();
+    $("#boxLayout").click(function () {
+      $.ajax({
+        type: "get",
+        url: base + "user/logout",
+        dataType: "json",
+        success: function (response) {
+          if (replaceState.code == 100) {
+            console.log("退出成功")
+          }
+        }
+      });
     })
-
   </script>
 </body>
 

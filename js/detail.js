@@ -9,16 +9,22 @@ for (const key in a) {
 
 $.ajax({
   type: "POST",
-  url: base + "/movie/getById.do",
+  url: base + "/movie/getMovieImagesById.do",
   data: {
     'id': value
   },
   dataType: 'json',
   success: function (response) {
     if (response.code == 100) {
-      Str(response.data)
-      avaterList(value);
+      Str(response.data["4"])
+      noswiper(response.data["3"])
       pinglunAjax(value, false);
+    } else {
+      layer.open({
+        content: '正在加载中'
+        , style: 'background-color:#09C1FF; color:#0f0; border:none;' //自定风格
+        , time: 3
+      });
     }
   }
 });
@@ -36,8 +42,8 @@ function Str(data) {
     + '<div class="rating-item"></div>'
     + '</div>'
     + '</div></div>'
-    + '<p><span>电影口碑:</span>' + data.movieDetailProfile + '</p>'
-    + '<p><span>电影详情:</span>' + data.deatil + '</p>'
+    + '<div><span>演员介绍:</span><p class="duohang1">' + data.moviePerformer + '</p></div>'
+    + '<div><span>电影详情:</span><p class="duohang2">' + data.movieDetailProfile + '</p></div>'
     + '<div id="yanyuan"><p><span>演员介绍:</span></p>'
     + '<div class="picMarquee-left" >'
     + '<div class="bd">'
@@ -59,33 +65,7 @@ function Str(data) {
   })
 }
 
-function avaterList(value) {
-  $.ajax({
-    type: "get",
-    url: base + "/movie/getMovieImagesById.do",
-    data: {
-      'id': value
-    },
-    dataType: "json",
-    success: function (response) {
-      if (response.code == 100) {
-        //loading带文字
-        layer.open({
-          type: 2
-          , content: '加载中'
-        });
-        noswiper(response.data || 0)
-      }
-    },
-    error: function (err) {
-      layer.open({
-        content: '正在加载中'
-        , style: 'background-color:#09C1FF; color:#0f0; border:none;' //自定风格
-        , time: 3
-      });
-    }
-  });
-}
+
 
 // pinglun
 function pinglunAjax(value, isAll) {
@@ -191,52 +171,96 @@ function pingjia(data) {
 }
 
 // 新增
-var ModalHelper = (function (bodyCls) {
-  var scrollTop;
-  return {
-    afterOpen: function () {//弹框弹出时
-      scrollTop = document.scrollingElement.scrollTop;
-      document.body.classList.add(bodyCls);
-      document.body.style.top = -scrollTop + 'px';
-    },
-    beforeClose: function () {//弹框消失时
-      document.body.classList.remove(bodyCls);
-      document.scrollingElement.scrollTop = scrollTop;
-    }
-  };
-})('modal-open');
+// var ModalHelper = (function (bodyCls) {
+//   var scrollTop;
+//   return {
+//     afterOpen: function () {//弹框弹出时
+//       scrollTop = document.scrollingElement.scrollTop;
+//       document.body.classList.add(bodyCls);
+//       document.body.style.top = -scrollTop + 'px';
+//     },
+//     beforeClose: function () {//弹框消失时
+//       document.body.classList.remove(bodyCls);
+//       document.scrollingElement.scrollTop = scrollTop;
+//     }
+//   };
+// })('modal-open1');
+
+// $(".demo-3").click(function () {
+//   // mask.show();//弹框出现时
+//   ModalHelper.afterOpen();
+// }).mouseleave(function () {
+//   // mask.hide();//弹框隐藏时
+//   ModalHelper.beforeClose();
+// })
 
 $(".demo-3").click(function () {
-  // mask.show();//弹框出现时
-  ModalHelper.afterOpen();
-}).mouseleave(function () {
-  // mask.hide();//弹框隐藏时
-  ModalHelper.beforeClose();
+  $(".add_pinglun").show(500);
+  $(".modal-open1 ").show(300)
+  $(this).addClass("hidden")
+  pinglun2(10);
 })
+
+$('.modal-open1').on('click', function (e) {
+  event.stopPropagation()
+  if ($(e.target).hasClass("modal-open1")) {
+    $('.add_pinglun').hide() //关闭弹出层
+    $(".modal-open1 ").hide(300)
+    $(".demo-3").removeClass("hidden")
+  }
+});
 
 
 // 评分2
-function pinglun2(num) {
+function pinglun2(num2) {
+  var num = Math.floor(num2 / 2)
+  var lightOn = function (num) {
+    $('#rating2').find('.rating-item').each(function (index) {
+      if (index < num) {
+        $(this).css('background-position', '0 0')
+      } else {
+        $(this).css('background-position', '-21px 0')
+      }
+    })
+  }
+  lightOn(num)
+  $('#rating2').on('mouseover', '.rating-item', function () {
+    lightOn($(this).index() + 1);
+  }).on('click', '.rating-item', function () {
+    num = $(this).index() + 1;
+  }).on('mouseout', '.rating-item', function () {
+    lightOn(num);
+  })
 
-}
-var num2 = 4.6;/* 把2赋值给变量num */
-var num = Math.floor(num2 / 2)
-console.log(num);
-var lightOn = function (num) {
-  $('#rating2').find('.rating-item').each(function (index) {
-    if (index < num) {
-      $(this).css('background-position', '0 0')
-    } else {
-      $(this).css('background-position', '-21px 0')
-    }
+  $("#tijiao").click(function () {
+    let text = $("#add_comment").val();
+    $.ajax({
+      url: base + '/comment/addComment.do',
+      type: "get",
+      dataType: 'JSON',
+      data: {
+        commentContent: text,
+        commentScore: num * 2,
+        movieId: value,
+        Authorization: localStorage.token
+      },
+      success: function (result) {
+        if (result.code == 100) {
+          //loading带文字
+          $(".add_pinglun").hide(200);
+          $(".modal-open").hide(300);
+          $(".demo-3").removeClass("hidden")
+        } else {
+          layer.open({
+            type: 2
+            , content: '添加失败'
+          })
+        }
+      }
+
+    })
   })
 }
-lightOn(num)
-$('#rating2').on('mouseover', '.rating-item', function () {
-  lightOn($(this).index() + 1);
-}).on('click', '.rating-item', function () {
-  num = $(this).index() + 1
-})
-$('#rating2').on('mouseout', '.rating-item', function () {
-  lightOn(num);
-})
+
+
+
