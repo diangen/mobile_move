@@ -6,6 +6,48 @@
   "description": "电影商城",
   "glyphs": [
     {
+      "icon_id": "20479502",
+      "name": "增加 添加 加减",
+      "font_class": "zengjiatianjiajiajian",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "6882647",
+      "name": "点赞",
+      "font_class": "dianzan-ash",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "16505065",
+      "name": "评 论",
+      "font_class": "pinglun",
+      "unicode": "e6d9",
+      "unicode_decimal": 59097
+    },
+    {
+      "icon_id": "21119423",
+      "name": "更  多",
+      "font_class": "gengduo",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "21977159",
+      "name": "对号",
+      "font_class": "huaban24",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "5979853",
+      "name": "红点",
+      "font_class": "hongdian",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
       "icon_id": "8038353",
       "name": "火苗",
       "font_class": "huohua-",

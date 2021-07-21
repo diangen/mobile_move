@@ -34,8 +34,11 @@ function movieAjax(i) {
     },
     success: function (response) {
       if (response.code == 100) {
-        weekendList(response.data.list);
+        weekendList(response.data.list || 0);
       }
+    },
+    error: function (param) {
+      alert("!")
     }
   });
 }
@@ -102,6 +105,9 @@ function otherAjax(i) {
           iconList(response.data["1"])
           footerList(response.data["2"])
         }
+      },
+      error: function (param) {
+        alert("!")
       }
     });
   }
@@ -185,9 +191,6 @@ $(".cin_title li").click(function () {
 //     "<br />Longitude: " + position.coords.longitude;
 // }
 
-
-
-
 function Swiper1(id) {
   var mySwiper = new Swiper(id, {
     loop: true,
@@ -201,7 +204,6 @@ function Swiper1(id) {
     },
   });
 }
-
 
 //  上拉刷新
 

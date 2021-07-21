@@ -15,58 +15,6 @@
   font-size: 0.48rem;
   color: #333;
 }
-.banner {
-  width: 100%;
-  height: 4rem;
-}
-.banner img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.content {
-  width: 100%;
-  padding: 0 0.266666rem;
-  box-sizing: border-box;
-}
-.content h3 {
-  font-size: 0.8rem;
-  margin: 10px 0;
-}
-.content p {
-  font-size: 0.426666rem;
-  margin: 0.1333rem 0;
-  line-height: 0.6333rem;
-}
-.content p span {
-  color: #666666;
-  margin-right: 0.4333rem;
-}
-.content .score {
-  color: #f00;
-  display: inline-block;
-}
-.ping {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-/* 评分五角星样式 */
-.rating {
-  width: 100%;
-}
-.rating-item {
-  float: left;
-  width: 21px;
-  height: 21px;
-  background: url(../img/rate.png) no-repeat;
-  cursor: pointer;
-  background-size: 40px;
-}
-.tempWrap {
-  width: 100%;
-}
 
 /* 评论 */
 .comment {
@@ -77,10 +25,9 @@
   margin-top: 0.2rem;
   padding: 0 0.3rem;
   /* 宿主元素 */
-  pointer-events: none;
-  margin-bottom: 1rem;
+  /* pointer-events: none; */
 }
-.comment123::after {
+/* .comment::after {
   content: "加载更多";
   width: 100%;
   text-align: center;
@@ -92,7 +39,7 @@
   color: #58e06f;
   /* 使用事件 */
   pointer-events: auto;
-}
+} */
 .comment li {
   width: 100%;
   box-sizing: border-box;
@@ -171,73 +118,4 @@
   font-size: 0.32rem;
   padding: 0.1rem 0.4rem;
   text-align: center;
-}
-
-/* 页脚添加设置 */
-.addFooter {
-  width: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  background-color: #fff;
-  box-shadow: 0 -5px 18px #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.addFooter span {
-  font-size: 0.6rem;
-  padding: 0.2rem;
-}
-/* 蒙层 */
-body.modal-open {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(66, 65, 65, 0.5);
-  z-index: 999;
-}
-.add_pinglun {
-  position: fixed;
-  top: 30%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 9999;
-  width: 80%;
-  background-color: #fff;
-  border-radius: 0.3667rem;
-}
-.add_pinglun h3 {
-  font-size: 0.4rem;
-  color: #ccc;
-  text-align: center;
-  margin: 0.4rem 0;
-}
-.add_pinglun .add_text {
-  margin: 0.3rem 0;
-  display: block;
-}
-.add_pinglun .add_text textarea {
-  width: 60%;
-  height: 2rem;
-  font-size: 0.4rem;
-  display: block;
-  margin: 0 auto;
-}
-.add_pinglun .add_text button {
-  width: 1.3333rem;
-  height: 0.8rem;
-  font-size: 0.3467rem;
-  color: #fff;
-  border-radius: 0.1333rem;
-  background-color: rgb(223, 45, 45);
-  margin-top: 0.1333rem;
-  margin-left: 50%;
-}
-.add_pinglun .add_rate {
-  width: 40%;
-  height: 0.4rem;
-  text-align: center;
-  margin: 0 auto;
 }
