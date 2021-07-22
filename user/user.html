@@ -74,6 +74,7 @@
             url: base + '/user/login.do', // 需要提交的 url
             data: $("#loginForm").serialize(),
             success: function (data) {
+              console.log(data)
               // 登录成功或者失败的提示信息
               if (data.code == 100) {
                 layer.open({
@@ -81,7 +82,7 @@
                   , content: '加载中'
                   , time: 2
                 });
-                window.localStorage.setItem("Token", data.data.token);
+                window.localStorage.setItem("token", data.data.token);
                 window.location.href = 'http://localhost:8081/inedx.html'
               } else {
                 layer.open({
@@ -95,7 +96,7 @@
           return false;
         }
       });
-    
+
     })
 
 

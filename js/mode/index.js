@@ -1,8 +1,21 @@
-var token = window.localStorage.getItem("Token")
-if (token)
+var token = window.localStorage.getItem("token")
+if (token) {
   $("#loginUser").hide()
-else
-  $("#loginUser").show()
+  perAjax();
+} else {
+  $("#loginUser").show();
+  persion1();
+}
+
+
+// 搜索
+$("#search").keyup(function (event) {
+  if (event.keyCode == 13) {
+    let name = $("#search").val()
+    window.location.href = "../../more.html?value=" + name
+  }
+});
+
 // 电影 数据----切换
 
 function listTab() {
@@ -13,7 +26,7 @@ function listTab() {
     addEventListener(list_header[i], 'click', function () {
       for (var j = 0; j < list_header.length; j++) {
         list_header[j].className = "tit"
-        list_center[j].className = "mode hidden"
+        list_center[j].className = "mode hide"
       }
       this.className = "active tit"
       list_center[i].className = "mode"
@@ -35,6 +48,7 @@ function movieAjax(i) {
     success: function (response) {
       if (response.code == 100) {
         weekendList(response.data.list || 0);
+        $("#search").val('')
       }
     },
   });
@@ -152,7 +166,7 @@ function footerTab(data) {
       for (var j = 0; j < footers.length; j++) {
         getFirstElement(footers[j]).className = "";
         getFirstElement(getFirstElement(footers[j])).src = data[j].imgBasePath;
-        foot_cents[j].className = "hidden";
+        foot_cents[j].className = "hide";
       }
       otherAjax(i + 1)
       getFirstElement(this).className = "active";
@@ -166,8 +180,8 @@ function footerTab(data) {
 $(".cin_title li").click(function () {
   $(this).addClass("active")
   $(this).siblings().removeClass("active")
-  $(".cin_content .cin_c_item").eq($(this).index()).removeClass("hidden")
-  $(".cin_content .cin_c_item").eq($(this).index()).siblings().addClass("cin_c_item hidden")
+  $(".cin_content .cin_c_item").eq($(this).index()).removeClass("hide")
+  $(".cin_content .cin_c_item").eq($(this).index()).siblings().addClass("cin_c_item hide")
 })
 
 
@@ -199,7 +213,7 @@ function Swiper1(id) {
 }
 
 // 个人信息设置
-perAjax();
+
 function perAjax() {
   $.ajax({
     type: "get",
@@ -227,7 +241,22 @@ function persion(data) {
     <a href="./settings.html?userId="${data.userId}><span class="iconfont icon-xiangyou1"></span></a>
   </div>
   `;
-  $(".fen_portrait").append(per);
+  $(".fen_portrait").html(per);
+}
+// 没有数据的情况下
+function persion1() {
+  let per = '';
+  per = `
+   <h3>我的</h3>
+    <div class="fen_head left">
+      <img src="https://res-1256218221.cos.ap-nanjing.myqcloud.com/user-head/head.png" alt="">
+    </div>
+    <div class="fen_title left">
+      <h2>请登录</h2>
+    <a href="#"><span class="iconfont icon-xiangyou1"></span></a>
+  </div>
+  `;
+  $(".fen_portrait").html(per);
 }
 
 //  上拉刷新

@@ -169,46 +169,31 @@ function pingjia(data) {
   })
 
 }
-
-// 新增
-// var ModalHelper = (function (bodyCls) {
-//   var scrollTop;
-//   return {
-//     afterOpen: function () {//弹框弹出时
-//       scrollTop = document.scrollingElement.scrollTop;
-//       document.body.classList.add(bodyCls);
-//       document.body.style.top = -scrollTop + 'px';
-//     },
-//     beforeClose: function () {//弹框消失时
-//       document.body.classList.remove(bodyCls);
-//       document.scrollingElement.scrollTop = scrollTop;
-//     }
-//   };
-// })('modal-open1');
-
-// $(".demo-3").click(function () {
-//   // mask.show();//弹框出现时
-//   ModalHelper.afterOpen();
-// }).mouseleave(function () {
-//   // mask.hide();//弹框隐藏时
-//   ModalHelper.beforeClose();
-// })
-
 $(".demo-3").click(function () {
-  $(".add_pinglun").show(500);
-  $(".modal-open1 ").show(300)
-  $(this).addClass("hidden")
-  pinglun2(10);
+  if (localStorage.token) {
+    $(".add_pinglun").show(500);
+    $(".modal-open1 ").show(300)
+    $(this).addClass("hidden")
+    pinglun2(10);
+  } else {
+    layer.open({
+      type: 2
+      , content: '请先登录'
+    })
+  }
+
 })
 
-$('.modal-open1').on('click', function (e) {
-  event.stopPropagation()
-  if ($(e.target).hasClass("modal-open1")) {
-    $('.add_pinglun').hide() //关闭弹出层
-    $(".modal-open1 ").hide(300)
-    $(".demo-3").removeClass("hidden")
-  }
-});
+
+
+// $('.modal-open1').on('click', function (e) {
+//   event.stopPropagation()
+//   if ($(e.target).hasClass("modal-open1")) {
+//     $('.add_pinglun').hide() //关闭弹出层
+//     $(".modal-open1 ").hide(300)
+//     $(".demo-3").removeClass("hidden")
+//   }
+// });
 
 
 // 评分2
@@ -248,8 +233,9 @@ function pinglun2(num2) {
         if (result.code == 100) {
           //loading带文字
           $(".add_pinglun").hide(200);
-          $(".modal-open").hide(300);
-          $(".demo-3").removeClass("hidden")
+          $(".modal-open1").hide(300);
+          $(".demo-3").removeClass("hidden");
+
         } else {
           layer.open({
             type: 2

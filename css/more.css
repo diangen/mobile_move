@@ -1,121 +1,136 @@
-.nav {
-  text-align: center;
+/* 电影演出 */
+.show {
   width: 100%;
-  height: 1.173333rem;
-  line-height: 1.173333rem;
-  border-bottom: 1px solid #0f0;
+}
+.show .nav {
+  width: 100%;
+  height: 1.0667rem;
+  line-height: 1.0667rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: #f56e56;
+  color: #fff;
+}
+.nav h3 {
+  font-size: 0.4533rem;
+  font-weight: 800;
+}
+.nav a {
+  width: 0.9333rem;
+  line-height: 1.0667rem;
+  font-size: 0.3667rem;
+  margin-left: 0.2667rem;
 }
 .nav span {
-  padding: 0 0.2333rem;
-  font-size: 0.4rem;
+  font-size: 0.3667rem;
 }
-.nav .tit {
-  font-size: 0.48rem;
-  color: #333;
-}
-
-/* 评论 */
-.comment {
-  width: 100%;
-  /* height: 10rem; */
-  overflow: hidden;
-  box-sizing: border-box;
-  margin-top: 0.2rem;
-  padding: 0 0.3rem;
-  /* 宿主元素 */
-  /* pointer-events: none; */
-}
-/* .comment::after {
-  content: "加载更多";
-  width: 100%;
-  text-align: center;
-  position: relative;
-  top: -0.4rem;
-  display: block;
-  background-color: rgba(255, 255, 255, 0.5);
-  font-size: 0.3467rem;
-  color: #58e06f;
-  /* 使用事件 */
-  pointer-events: auto;
-} */
-.comment li {
-  width: 100%;
-  box-sizing: border-box;
-  border-bottom: #000;
-  margin: 0.4rem 0;
-  position: relative;
-}
-.comment li .commetn-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.comment li .commetn-item .avater {
-  width: 1.2rem;
+.show .show_head {
   height: 1.2rem;
-  border-radius: 50%;
-}
-.comment li .commetn-item span {
-  font-size: 0.62rem;
-}
-.comment li .commetn-item .avater img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: inline-block;
-}
-.comment li .commetn-item .all-item {
   display: flex;
-  font-size: 0.42rem;
-}
-.comment li .commetn-item .c_i_a {
-  margin: 0 0 0.2rem 0.4667rem;
-}
-.comment li .commetn-item .c_i_b {
-  margin-left: 0.2667rem;
-  font-size: 0.32rem;
-  color: #ccc;
-}
-.comment li .commetn-item span {
-  font-size: 0.32rem;
-}
-
-.comment li .pinglun {
-  width: 100%;
-  font-size: 0.3467rem;
-  margin-top: 0.3333rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-.comment li .goods {
-  font-size: 0.32rem;
-  display: flex;
+  justify-content: space-around;
   align-items: center;
 }
-.comment li .goods p {
-  margin: 0.1rem 0.3rem;
+.show .show_head .show_h_l {
+  padding: 0 0.4rem;
+  font-size: 0.4267rem;
 }
-.comment li .c_more_dv {
-  width: 1.6667rem;
-  position: absolute;
-  right: 0;
-  top: 0.2633rem;
-  border: 1px solid #666666;
-  box-shadow: 2px 2px 4px #000;
-  z-index: 99;
-  display: none;
-  transition: 0.3s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  background-color: #fff;
+.show .show_head .show_h_l span {
+  color: #f56e56;
+  font-size: 0.4267rem;
 }
-.comment li .c_more_dv p {
-  font-size: 0.32rem;
-  padding: 0.1rem 0.4rem;
-  text-align: center;
+.show .show_head .show_h_l p {
+  margin: 0 0.2rem;
+}
+.show .show_head .show_h_r {
+  width: 7.5rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  box-sizing: border-box;
+  padding: 0 0.2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.2667rem;
+  background-color: #f7f7f7;
+}
+.show .show_head .show_h_r span {
+  margin: 0 0.4rem;
+  font-size: 0.4267rem;
+}
+
+.show .show_head .show_h_r input {
+  width: 90%;
+  height: 60%;
+  font-size: 0.4267rem;
+  background-color: #f7f7f7;
+}
+.show .show_head p {
+  font-size: 0.4467rem;
+  color: #f56e56;
+}
+.show .show_nav {
+  width: 100%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  color: #000;
+  font-size: 0.34rem;
+  box-sizing: border-box;
+  padding: 0 0.2rem;
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px 0;
+}
+
+/* 设置mode中的样式 */
+.list-con {
+  display: flex;
+  margin: 0.266666rem 0;
+  box-sizing: border-box;
+  padding: 0.1533rem 0.18rem;
+}
+.list-con .list-hidden {
+  height: 3.4rem;
+  width: 3rem;
+  flex: 0 0 3rem;
+}
+.list-con .list-hidden img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.list-con .list-title {
+  padding: 0 0.3rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.list-con .list-title h3 {
+  font-size: 0.326666rem;
+  margin: 0.1rem 0 0.366666rem 0;
+  line-height: 0.4rem;
+  font-weight: 800;
+}
+.mode .list-title .list-title-more {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.mode .list-title .list-title-more span {
+  font-size: 0.373333rem;
+}
+.mode .list-title p {
+  width: 100%;
+  font-size: 0.373333rem;
+  display: block;
+  margin: 0.18rem 0 0.166666rem 0;
+}
+.mode .list-title .yichu {
+  display: inline-block;
+  width: 70%;
+  white-space: nowrap; /* 不换行 */
+  overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
+}
+.mode .list-title p span {
+  color: #666;
 }

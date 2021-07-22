@@ -183,21 +183,14 @@
           <p id="boxLayout" class="box_btn">退出用户</p>
         </li>
       `;
-      $("#set_infor2").append(str)
+      $("#set_infor2").append(str);
+      $("#boxLayout").click(function () {
+        
+        localStorage.removeItem('token')
+        window.location.href = 'http://localhost:8081/inedx.html'
+      })
     }
 
-    $("#boxLayout").click(function () {
-      $.ajax({
-        type: "get",
-        url: base + "user/logout",
-        dataType: "json",
-        success: function (response) {
-          if (replaceState.code == 100) {
-            console.log("退出成功")
-          }
-        }
-      });
-    })
   </script>
 </body>
 

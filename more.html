@@ -5,31 +5,90 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>评论</title>
-  <link rel="stylesheet" href="css/swiper.min.css">
+  <title>搜索</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./font/iconfont.css">
-  <link rel="stylesheet" href="./js/alert/animate.min.css">
-  <link rel="stylesheet" href="./js/alert/jquery.gDialog.css">
+  <link rel="stylesheet" href="./css/more.css">
 
 <body>
 
-  <button class="btn demo-3">Prompt Dialog Box</button>
-</body>
-<script src="./js/jquery-1.8.3.js"></script>
-<script src="./js/flexible.js"></script>
-<script src="./js/common.js"></script>
-<script src="./js/alert/jquery.gDialog.js"></script>
+  <div class="show">
+    <div class="nav">
+      <a href="./inedx.html">
+        <span class="iconfont icon-xiangzuo-copy">
+        </span></a>
+      <h3>搜索</h3>
+      <div></div>
+    </div>
+    <div class="show_head">
+      <div class="show_h_r">
+        <span class="iconfont icon-sousuo"></span>
+        <input id="seach" type="search" placeholder="找明星、演出、场馆">
+      </div>
+      <p id="abandom">取消</p>
+    </div>
+    <div class="show_nav">
+      <p>电影 / 电视剧 / 综艺</p>
+    </div>
+  </div>
+  <div class="list-content">
+    <div class="mode" id="con1">
+    </div>
+  </div>
 
-<script>
-  $('.demo-2').click(function () {
-    $.gDialog.prompt("站长素材", "sc.chinaz.com", {
-      title: "Prompt Dialog Box",
-      required: true,
-      animateIn: "rollIn",
-      animateOut: "rollOut"
+
+  <script src="./js/jquery-1.8.3.js"></script>
+  <script src="./js/flexible.js"></script>
+  <script src="./js/common.js"></script>
+  <script>
+    let seach = '';
+    var urlinfo = window.location.href;//获取url
+    var userName = urlinfo.split("?")[1].split("=")[1];
+    //拆分url得到”=”后面的参数
+    $("#seach").focus()
+    $("#seach").val(decodeURI(userName))
+    seachAjax(decodeURI(userName))
+    $("#seach").keyup(function (event) {
+      if (event.keyCode == 13) {
+        seachAjax($("#seach").val())
+        $("#seach").val('')
+      }
     });
-  });
-</script>
+    $("#abandom").click(function () {
+      $("#seach").val('');
+    })
+    function seachAjax(seach) {
+      $.ajax({
+        type: "get",
+        url: base + "/movie/search.do",
+        data: {
+          s: seach
+        },
+        dataType: "json",
+        success: function (response) {
+          if (response.code == 100)
+            weekendList(response.data)
+        }
+      });
+    }
+
+    function weekendList(data) {
+      let reping1 = '';
+      if (!data) return false;
+      $.each(data, function (index, data) {
+        reping1 += ' <a href="detail.html?id=' + data.movieId + '" class="list-con">' +
+          '<div class="list-hidden" >' +
+          '<img src=' + data.movieManPicture + ' alt=""> </div>' +
+          '<div class="list-title">' +
+          '<h3>' + data.movieName + '</h3>' +
+          '<div class="list-title-more"><span>主演：</span><p class="yichu">' + data.movieStar + '</p></div>' +
+          '<p><span>上映时间：</span>' + newDate(newDate(data.movieReleaseDate)[0])[0] + '</p>' +
+          '<p><span>评分：</span>' + data.movieExpectationValue + '</p>' +
+          '</div>' +
+          '</a>'
+      })
+      $("#con1").html(reping1);
+    }
+  </script>
 
 </html>
