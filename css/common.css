@@ -5,6 +5,9 @@ body {
   font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei",
     "WenQuanYi Micro Hei", sans-serif;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 .left {
   float: left;
