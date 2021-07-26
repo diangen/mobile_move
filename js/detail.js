@@ -56,13 +56,13 @@ function Str(data) {
 
   pingfen(data.movieExpectationValue)
   // 动态实现评论（事件委托）
-  $("#rating").on('mouseover', '.rating-item', function () {
-    pingfen($(this).index() + 1)
-  }).on('mouseout', '.rating-item', function () {
-    pingfen(data.movieExpectationValue)
-  }).on('click', '.rating-item', function () {
-    data.movieExpectationValue = $(this).index() + 1
-  })
+  // $("#rating").on('mouseover', '.rating-item', function () {
+  //   pingfen($(this).index() + 1)
+  // }).on('mouseout', '.rating-item', function () {
+  //   pingfen(data.movieExpectationValue)
+  // }).on('click', '.rating-item', function () {
+  //   data.movieExpectationValue = $(this).index() + 1
+  // })
 }
 
 
@@ -180,20 +180,12 @@ $(".demo-3").click(function () {
       type: 2
       , content: '请先登录'
     })
+    $(".add_pinglun").hide(200);
+    $(".modal-open1").hide(300);
+    $(".demo-3").removeClass("hidden");
   }
 
 })
-
-
-
-// $('.modal-open1').on('click', function (e) {
-//   event.stopPropagation()
-//   if ($(e.target).hasClass("modal-open1")) {
-//     $('.add_pinglun').hide() //关闭弹出层
-//     $(".modal-open1 ").hide(300)
-//     $(".demo-3").removeClass("hidden")
-//   }
-// });
 
 
 // 评分2
@@ -235,12 +227,16 @@ function pinglun2(num2) {
           $(".add_pinglun").hide(200);
           $(".modal-open1").hide(300);
           $(".demo-3").removeClass("hidden");
-
+          $("#add_comment").val('')
         } else {
           layer.open({
             type: 2
             , content: '添加失败'
           })
+          $(".add_pinglun").hide(200);
+          $(".modal-open1").hide(300);
+          $(".demo-3").removeClass("hidden");
+          $("#add_comment").val('')
         }
       }
 

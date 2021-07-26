@@ -223,6 +223,7 @@ function perAjax() {
     },
     dataType: "json",
     success: function (response) {
+      console.log(response)
       if (response.code = 100) {
         persion(response.data)
       }
@@ -252,7 +253,7 @@ function persion1() {
       <img src="https://res-1256218221.cos.ap-nanjing.myqcloud.com/user-head/head.png" alt="">
     </div>
     <div class="fen_title left">
-      <h2>请登录</h2>
+      <h2><a href="./login.html">请登录</a></h2>
     <a href="#"><span class="iconfont icon-xiangyou1"></span></a>
   </div>
   `;

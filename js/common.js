@@ -62,20 +62,6 @@ if (!Array.prototype.forEach) {
   };
 }
 
-
-/**
- * Created by Administrator on 2017-08-18.
- */
-//格式化日期的代码
-
-//根据id获取元素的代码
-
-//innerText和textContent的兼容
-
-//获取第一个子元素的兼容
-
-//获取最后一个子元素的兼容
-
 /**
  * Created by Administrator on 2017/3/24.
  */

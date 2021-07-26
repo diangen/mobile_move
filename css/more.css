@@ -44,8 +44,9 @@
 }
 .show .show_head .show_h_r {
   width: 7.5rem;
-  height: 0.8rem;
-  line-height: 0.8rem;
+  height: 100%;
+  /* height: 0.8rem; */
+  /* line-height: 0.8rem; */
   box-sizing: border-box;
   padding: 0 0.2rem;
   display: flex;

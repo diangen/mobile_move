@@ -136,6 +136,9 @@
   box-sizing: border-box;
   padding: 0.1533rem 0.18rem;
 }
+.list-content .mode {
+  margin-bottom: 1.8333rem;
+}
 .list-con .list-hidden {
   height: 3.4rem;
   width: 3rem;
