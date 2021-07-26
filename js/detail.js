@@ -186,6 +186,12 @@ $(".demo-3").click(function () {
   }
 
 })
+$(".modal-open1").click(function () {
+  $(".add_pinglun").hide(200);
+  $(".modal-open1").hide(300);
+  $(".demo-3").removeClass("hidden");
+  $("#add_comment").val('')
+})
 
 
 // 评分2
